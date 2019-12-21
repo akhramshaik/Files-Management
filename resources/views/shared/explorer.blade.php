@@ -87,11 +87,11 @@
 <br>
 <!-- add folder modal -->
 <div class="modal fade" id="folder-create-modal" tabindex="-1" role="dialog">
-    <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-dialog modal-md" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">Create folder...</h4>
+                <h4 class="modal-title">Create Folder</h4>
             </div>
                 <div class="modal-body">
                     <div class="form-group">
@@ -101,7 +101,7 @@
 
                     <div class="form-group">
                         <label><b>Note:</b></label>
-                        <input type="text" ng-model="folder_desc" class="form-control" />
+                    <textarea ng-model="folder_desc" class="form-control" rows="5" id="comment"></textarea>
                     </div>
 
                 </div>
@@ -114,11 +114,11 @@
 </div>
 <!-- rename file modal -->
 <div class="modal fade" id="rename-file-modal" tabindex="-1" role="dialog">
-    <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-dialog modal-md" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">Rename file...</h4>
+                <h4 class="modal-title">Edit File</h4>
             </div>
             <div class="modal-body">
                 <div class="form-group">
@@ -127,7 +127,8 @@
                 </div>
                  <div class="form-group">
                     <label><b>Note:</b></label>
-                    <input type="text" ng-model="description" class="form-control" />
+                    <textarea ng-model="description" class="form-control" rows="5" id="comment"></textarea>
+                    <!-- <input type="text"  class="form-control" /> -->
                 </div>
             </div>
             <div class="modal-footer">
@@ -140,11 +141,11 @@
 
     <!-- rename folder modal -->
     <div class="modal fade" id="rename-folder-modal" tabindex="-1" role="dialog">
-        <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-dialog modal-md" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title">Rename folder...</h4>
+                    <h4 class="modal-title">Edit Folder</h4>
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
@@ -153,7 +154,7 @@
                     </div>
                      <div class="form-group">
                         <label><b>Note:</b></label>
-                        <input type="text" ng-model="folder_desc" class="form-control" />
+                    <textarea ng-model="folder_desc" class="form-control" rows="5" id="comment"></textarea>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -172,7 +173,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title">Move file...</h4>
+                    <h4 class="modal-title">Move File Location</h4>
                 </div>
 
                 <div class="modal-body">

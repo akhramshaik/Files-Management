@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ \App\Helpers\ConfigHelper::getValue('site_name') }} - LaravelFileManager</title>
+    <title>Algorithmica File Management</title>
 
     <!-- Styles -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -42,9 +42,7 @@
                 </button>
 
                 <!-- Branding Image -->
-                <a class="navbar-brand" href="{{ url('/') }}">
-Algorithmica File Management
-                </a>
+                <a class="navbar-brand" href="{{ url('/') }}"> Algorithmica File Management </a>
             </div>
 
             <div class="collapse navbar-collapse" id="app-navbar-collapse">

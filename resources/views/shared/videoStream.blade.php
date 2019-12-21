@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ \App\Helpers\ConfigHelper::getValue('site_name') }} - LaravelFileManager</title>
+    <title>Algorithmica File Management</title>
 
     <!-- Styles -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -41,17 +41,13 @@
                     <span class="icon-bar"></span>
                 </button>
 
-                <!-- Branding Image -->
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{--LaravelFileManager--}}
-                    {{ \App\Helpers\ConfigHelper::getValue('site_name') }}
-                </a>
+                <a class="navbar-brand" href="{{ url('/') }}"> Algorithmica File Management </a>
+
             </div>
 
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
-                    <li><a href="{{route('home')}}"><i class="fa fa-folder-open-o"></i>&nbsp;&nbsp;My Files</a></li>
 
                     @if (Auth::user()->user_type == 'admin')
                         <li class="dropdown">
