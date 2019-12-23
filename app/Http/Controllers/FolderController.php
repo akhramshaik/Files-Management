@@ -4,9 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Folder;
+use App\File;
 use Auth;
 use DB;
 use Carbon\Carbon;
+
+use Log;
 
 class FolderController extends Controller
 {
@@ -33,8 +36,29 @@ class FolderController extends Controller
         if ($folder == 0) {
             // get the parent folders
             $folders = Folder::where('parent_folder', '0')->where('user_id', Auth::id())->orderBy('folder_name', 'asc')->get();
+
+                 foreach ($folders as $key => $value) {
+                        # code...
+                         $foldersCount = Folder::where('parent_folder', $value->id)->where('user_id', Auth::id())->orderBy('folder_name', 'asc')->count();
+              
+                          $filesCount = File::where('folder_id', $value->id)->where('user_id', Auth::id())->orderBy('file_name', 'asc')-> count();
+
+                         $count = $foldersCount + $filesCount;
+                         $folders[$key]['count'] = $count;
+                    }
+           
         } else {
             $folders = Folder::where('parent_folder', $folder)->where('user_id', Auth::id())->orderBy('folder_name', 'asc')->get();
+
+             foreach ($folders as $key => $value) {
+                # code...
+                 $foldersCount = Folder::where('parent_folder', $value->id)->where('user_id', Auth::id())->orderBy('folder_name', 'asc')->count();
+      
+                  $filesCount = File::where('folder_id', $value->id)->where('user_id', Auth::id())->orderBy('file_name', 'asc')-> count();
+
+                 $count = $foldersCount + $filesCount;
+                 $folders[$key]['count'] = $count;
+            }
         }
 
         return $folders->toJson();
@@ -98,6 +122,18 @@ class FolderController extends Controller
             $folders = Folder::orderBy('folder_name', 'asc')->get();
     
             return $folders->toJson();
+    }
+
+    public function deleteFolder($id){
+        try {
+            $folder = Folder::where('id', $id)->first();
+
+            $folder->forceDelete();
+
+            return response()->json(['msg' => 'Folder deleted.', 'status' => '200'], 200);
+        } catch (\Exception $ex) {
+            return response()->json(['msg' => $ex->getMessage(), 'status' => '500'], 500);
+        }
     }
 
 

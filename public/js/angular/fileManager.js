@@ -77,13 +77,15 @@ fileManagerApp.controller('explorerController', function($scope, $http, $rootSco
       $scope.folders = response.data;
     });
 
-    $http({
-      method: 'POST',
-      url: explorer_get_folder_bc_url,
-      data: data
-    }).then(function(response) {
-      $scope.folderBreadcrumb = response.data;
-    });
+    
+
+    // $http({
+    //   method: 'POST',
+    //   url: explorer_get_folder_bc_url,
+    //   data: data
+    // }).then(function(response) {
+    //   $scope.folderBreadcrumb = response.data;
+    // });
 
     $scope.getQuota();
 
@@ -125,6 +127,24 @@ fileManagerApp.controller('explorerController', function($scope, $http, $rootSco
       $scope.getFiles();
     });
   };
+
+   $scope.deleteFolder = function(id) {
+    var url = folder_delete_url;
+
+    url = url + "/" + id;
+
+    $http.get(url).then(function(response) {
+      if (response.status == "200") {
+        notify(response.msg, 1);
+      } else {
+        notify(response.msg, 3);
+      }
+
+      $scope.getFiles();
+    });
+  };
+
+
 
   $scope.createFolder = function() {
     var data = {
@@ -180,7 +200,7 @@ fileManagerApp.controller('explorerController', function($scope, $http, $rootSco
              url: folder_move_file_url,
              data: data
           }).then(function(response) {
-            $scope.allFolders = response.data ;
+            $scope.allFolders = response.data;
           });
 
     $('#move-file-modal').modal('toggle');

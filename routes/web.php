@@ -34,11 +34,10 @@ Auth::routes();
     Route::get('getVideo/{video?}', 'FileController@getVideo')->name('getVideo');
 
      Route::get('videoPage/{video?}', 'FileController@videoPage')->name('videoPage');
+     
+     Route::get('/folder/delete/{id?}', ['uses' => 'FolderController@deleteFolder'])->name('folder.delete');
 
 
-
-
-  //  Route::post('/explorer/files', ['uses' => 'FileController@moveFile'])->name('explorer.move.file');
 
 
     // Profile routes

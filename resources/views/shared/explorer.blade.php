@@ -36,11 +36,16 @@
                                         <tr class="dropzone clickable-row" data-folder="@{{ f.id }}" ng-repeat="f in folders | orderBy:myOrderBy" ng-click="$parent.folder=f.id; getFiles()" ui-sortable="dropzone" ng-model="dropzoneFiles">
                                             <td><i class="fa fa-folder fa-2x" style="vertical-align:  -20%;"></i>&nbsp;&nbsp;&nbsp;&nbsp;@{{ f.folder_name }}</td>
                                             <td>Folder</td>
-                                            <td></td>
+                                            <td>@{{ f.count }} files</td>
                                             <td>@{{ f.updated_at }}</td>
                                             <td>
                                                <!--  <a class="btn btn-default btn-sm" href="{{route('explorer.download')}}/@{{ file.id }}"><i class="fa fa-download"></i></a> -->
                                                 <a class="btn btn-primary btn-sm" data-toggle="modal" data-target="#rename-folder-modal" ng-click="$parent.folderName=f.folder_name; $parent.folderId=f.id;$parent.folder_desc=f.folder_desc; showFolderRenameModal($event);"><i class="fa fa-pencil"></i></a>
+                                             
+                                             <span ng-if="f.count == 0">
+                                                 <a class="btn btn-danger btn-sm" ng-click="deleteFolder(f.id)"><i class="fa fa-trash"></i></a>
+                                             </span>
+
                                             </td>
                                         </tr>
                                         </tbody>
@@ -66,6 +71,11 @@
                                                  <a class="btn btn-primary btn-sm" data-toggle="modal" data-target="#move-file-modal" ng-click="$parent.fileName=file.file_name; $parent.fileId=file.id;showMoveFileModal($event);">Move</a>
 
                                                  <a class="btn btn-primary btn-sm" target="_blank" href="{{route('videoPage')}}/@{{ file.file_hash }}">Open</a>
+
+                                                 <a class="btn btn-primary btn-sm" target="_blank" href="{{storage_path('app/uploads/')}}@{{ file.file_hash }}">Open image</a>
+                                                 
+
+
 
                                                   <a class="btn btn-default btn-sm" href="{{route('explorer.download')}}/@{{ file.id }}"><i class="fa fa-download"></i></a>
                                                 <a class="btn btn-danger btn-sm" ng-click="deleteFile(file.id)"><i class="fa fa-trash"></i></a>

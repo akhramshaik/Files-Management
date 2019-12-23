@@ -71,6 +71,7 @@ class FileController extends Controller
         return $files->toJson();
     }
 
+
     public function downloadFile($id) {
         $file = File::where('id', $id)->first();
 
@@ -140,6 +141,8 @@ class FileController extends Controller
          Log::info($videoName);
          return view('shared.videoStream')->with('videoName',$videoName);
     }
+
+     
 
 
 }

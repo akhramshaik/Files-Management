@@ -14,6 +14,7 @@
 
 
     var folder_move_file_url = '{{route('folder.movefile')}}';
+    var folder_delete_url = '{{route('folder.delete')}}';
 
     @if(Auth::user()->user_type == 'admin')
         var admin_users_get_url = '{{route('admin.users.get')}}';
